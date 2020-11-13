@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J04ForWhile.html</title>
+
+    <script>
+
+        /*
+        Java : for문 안에서 선언된 변수는 for문을 벗어나면 소멸된다.
+        JS : script태그 내에서 선언된 변수는 해당 페이지의 모든 영역에서
+            사용할 수 있다. for문 내에서 선언된 변수 역시 전역에서 사용 가능.
+            (function 함수에만 지역변수 존재)
+        */
+        for(var i=0 ; i<5 ; i++)
+        {
+            var varInFor = 100;
+            document.write('i='+i+"<br>");
+        }
+        document.write("for문이 끝난 후 i의 값 : "+ i +"<br>");
+        document.write("for문 안에서 선언한 변수 varInFor : " + varInFor);
+
+        /*
+        시나리오] for문으로 다음 모양을 출력하는 JS를 작성하세요
+
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 1 0
+        0 0 0 0 1
+        */
+
+        document.write("<h2>이중 for문을 통한 출력</h2>");
+        
+        for(var i=1 ; i<=5 ; i++)
+        {
+            for(var j=1 ; j<=5 ; j++)
+            {
+                if(i==j)
+                    document.write("1&nbsp;");
+                else
+                    document.write("0&nbsp;");
+            }
+            document.write("<br>");
+        }
+
+        document.write("<h2>이중 while문을 통한 출력</h2>")
+
+        var x=1, y=1
+        while(x<=5) 
+        {
+            while(y<=5)
+            {
+                if(x==y)
+                    document.write("1&nbsp;")
+                else
+                    document.write("0&nbsp;");
+                y++;
+            }
+            document.write("<br>");
+            y=1; //두번째 while문을 벗어나서 1로 초기화시켜야지 25번 진행가능
+            x++;
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <!--
+    head영역에서 선언한 변수는 HTML문서 전체에서 사용 가능하므로
+    아래부분은 Error없이 정상출력된다!
+    -->
+    <h3>head영역 선언 변수 => body영역에서도 사용 가능</h3>
+
+    <script>
+        document.write("여기는 body영역" + "<br>"); 
+        document.write("for문이 끝난 후 i의 값 : "+ i +"<br>");
+        document.write("for문 안에서 선언한 변수 varInFor : " + varInFor);
+    </script>
+
+</body>
+
+</html>
