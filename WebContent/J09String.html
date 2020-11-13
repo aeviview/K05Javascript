@@ -49,6 +49,38 @@
         }
         document.write("<br/>");
 
+        //구분자로 문자열을 분리해서 배열로 반환하는 함수
+        document.write("<h2>split() 함수</h2>");
+        document.write("<h3>구분자가 있는 경우</h3>");
+        var tel = "010-1234-5678";
+        var telArr = tel.split("-");
+
+        //크기가 3인 배열로 반환
+        for(var i=0 ; i<telArr.length ; i++)
+        {
+            document.write("telArr["+ i +"]="+ telArr[i] + "<br>");
+        }
+        
+        
+        document.write("<h3>구분자가 없는 경우</h3>");
+        var telArrNo = tel.split("*");
+        
+        //크기가 1인 배열로 반환
+        for(var i=0 ; i<telArrNo.length ; i++)
+        {
+            document.write("telArrNo["+ i +"]="+ telArrNo[i] + "<br>");
+        }
+        
+        //특정 문자열의 인덱스를 반환하는 함수
+        document.write("<h2>indexOf() 함수</h2>");
+        document.write(str2.indexOf("자바")!=-1 ? "자바 포함됨" : "자바 포함안됨");
+
+        document.write("<h2>lastIndexOf() 함수</h2>");
+        document.write(str1.lastIndexOf("a")!=-1 ? "a 포함됨<br>" : "a 포함안됨<br>");
+        document.write(str1 +"에서 a의 마지막 위치는?"+ str1.lastIndexof("a")+"<br>");
+
+
+
     </script>
 
 </head>

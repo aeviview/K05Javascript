@@ -39,6 +39,42 @@
     var isNum2 = isNumber("100A");
     (isNum2 == true) ? document.write("숫자형식<br/>"): document.write("숫자형식아님<br/>");
 
+
+
+    /*
+    연습문제] 아래 이메일 주소에서 @와 .사이에 있는값만
+    추출하여 출력하는 프로그램을 작성하시오.
+    xxx@yyy.co.kr 이라면 yyy만 출력되어야 한다.
+    */
+    var emailArray = ["kim@naver.com", "sung@hanmail.net", "park@ikosmo.co.kr"];
+    var getDomainStr = function(emailArr)
+    {
+        //이부분을 구현하시오.
+        //방법(1) indexOf사용
+        for(var i=0 ; i<emailArr.length ; i++)
+        {
+            var startIdx = emailArr[i].indexOf('@') + 1; //@의 인덱스를 찾아 1을 더해준다! (앞쪽 문자열부터니까)
+            var endIdx = emailArr[i].indexOf(".");  //.의 인덱스를 찾는다
+            resultStr = emailArr[i].substring(startIdx, endIdx); //인덱스를 통해 문자열을 잘라낸다.
+            document.write("결과1(indexOf)="+ resultStr + "<br/>");
+        }
+        document.write("<br/>")
+        //방법(2) split사용 => 웹사이트에서 크롤링할 때 사용한다!
+        for(var i=0 ; i<emailArr.length ; i++)
+        {
+            var firstArr = emailArr[i].split('@'); //이메일의 @을 기준으로 첫번째 split을 한다
+            var secondArr = firstArr[1].split('.'); //위 인덱스값으로 두번째 split을 한다
+            document.write("결과2(split) ="+ secondArr[0] + "<br/>"); //두번째 인덱스값의 0번 인덱스를 출력!
+            
+            // ex) park (@을 기준으로 0번째 인덱스) @ ikosmo.co.kr (@을 기준으로 1번째 인덱스) = 첫번째split
+            // ex) ikosmo (0번째 인덱스) co (1번째 인덱스) kr (2번째 인덱스)
+        }
+
+
+    }
+    document.write("<h2>연습문제>도메인 추출하기</h2>");
+    getDomainStr(emailArray);
+
     </script>
 
 </head>
