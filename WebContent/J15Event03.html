@@ -10,7 +10,32 @@
         window.addEventListener("load" , function()
         {
             alert("Load 이벤트활용3. 문서 로딩 완료됨..");
+
+            var mydiv = document.getElementById("mydiv").innerHTML;
+            alert("mydiv의 내용 = " + mydiv);
+            //mydiv = 밑에도 있는데 둘 다 다른 함수의 지역변수이기 때문에 상관없다!
         });
+        
+        /*
+        JS는 인터프리터 방식이므로 "DOM이 등장하기전에 해당 내용을 가져오면
+        에러가 발생"하게 된다. 따라서 HTML문서의 로드가 끝난 이후 읽어올 수 있도록
+        함수로 정의하거나, 문서 하단(body)에 script를 사용해서 기술해야 한다.
+
+        
+        var mydiv = document.getElementById("mydiv").innerHTML;
+        alert("mydiv의 내용 = " + mydiv);
+        
+        - 인터프리터 언어(통역사) : 번역과 실행이 동시에 이루어지는 언어 (ex 스크립트언어)
+        - 컴파일 언어 : 명령들을 모아놓고 한 번에 실행하는 방식, 컴파일 과정 필요!
+
+        */
+
+        function myFunc()
+        {
+        var mydiv = document.getElementById("mydiv").innerHTML;
+        alert("mydiv의 내용 = " + mydiv);
+        }
+
     </script>
 </head>
 
@@ -18,5 +43,14 @@
     <script>
         alert("문서의 마지막 부분");
     </script>
+
+    <div id="mydiv" onclick="myFunc();" style="cursor: pointer;">
+        여기는 div 영역입니다
+    </div>
+
+    <script>
+        //DOM이 선언된 이후 이므로 여기에 기술해도 상관없다!
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuUpDownGame.html</title>
+
+    <style>
+        * {margin : 0; padding : 0}
+        div
+        {
+            border : 1px solid black; padding: 5px;
+            width : 300px; height : 400px; text-align: left;
+        }
+      
+    </style>
+
+    <script>
+        window.onload = function
+        {
+            
+            var count = document.getElementById("count_i"); //게임 실행 횟수
+            var text = document.getElementById("text_i"); //화면에 출력되는 값(?)
+            var ipNum = document.getElementById("ipNum_i"); //입력값
+
+            //ipNum.innerHTML="0"; //입력값을 저장할 변수
+
+            var rdNum = parseInt(Math.random()*100) + 1; //시스템이 1~100까지 난수 발생시켜 저장
+
+            var min = 1; //최소값
+            var max = 100; //최대값
+
+            for(var i=0 ; i<8; i++)
+            {
+                var count_i = document.createElement("button");
+                count_i.innerHTML = ""+i;
+                count_i.onclick = function(e)
+                {
+                    var number = parseInt(ipNum_i.innerHTML);
+                    var number2 = parseInt(this.innerHTML);
+
+                    ipNum_i.innerHTML = number * 10 + num;
+                };
+                count.appendChild(count_i);
+            }
+            
+            //결과 확인 버튼 생성
+            var answer = document.createElement("button");
+            answer.innerHTML="OK";
+
+            //결과 확인 버튼 눌렀을 때 처리 부분
+            answer.onclick = function(e)
+            {
+                var number = parseInt(ipNum_i.innerHTML);
+
+                if(number < min || number > max)
+                {
+                    text.value += number + "는 범위에 맞지 않습니다!";
+                    ipNum_i.innerHTML = "0"
+                }
+                else if(number==number2)
+                {
+                    text.value += number + "정답입니다!";
+                    ipNum_i.innerHTML = "0"
+                }
+                else if(number<num)
+                {
+                    text.value += number + "는 정답이 아닙니다!";
+                    min=number;
+                    ipNum_i.innerHTML = "0"
+                }
+                else if(number>num)
+                {
+                    text.value += number + "는 정답이 아닙니다!";
+                    max=number;
+                    ipNum_i.innerHTML = "0"
+                }
+            };
+            count.appendChild(answer);
+           
+        };
+
+      
+
+    </script>
+
+
+    
+</head>
+
+
+
+<body>
+        <div>
+    
+        <h2>업다운게임</h2>
+        <br>
+        <h3>1~100사이의 숫자를 입력하세요</h3>
+        <br><br>
+        <h3>시도횟수 : 회</h3>
+        <br>
+        <h3>숫자입력 : 
+                <input type="text" size="5">
+                <input type="button" value="확인" onclick="select();" /> </h3>
+        <br>
+        <h3 id="photo"><img src="./images/updowngame.jpg" 
+            alt="UpDown" width="300px" height="190px"></h3>
+
+
+        </div>
+
+</body>
+
+</html>

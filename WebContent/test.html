@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>test</title>
+
+    <script>
+        var tv = new Object();
+        
+        tv.color = "black";
+        tv.price = 1200000;
+        
+        tv.info = function()
+        {
+            document.write("tv색상 : "+ this.color, "<br/>")
+            document.write("tv가격 : "+ this.price, "<br/>")
+        }
+
+        document.write("<h1>tv 객체 메서드 호출</h1>")
+        tv.info();
+
+        var car = new Object();
+
+        car.color = "white";
+        car.price = "50000";
+
+        car.info = function()
+        {
+            document.write("car색상 : "+ this.color, "<br/>")
+            document.write("car가격 : "+ this.price, "<br/>")
+        }
+        document.write("<h1>car 객체 메서드 호출</h1>")
+
+        car.info();
+
+        document.write("<h1> 가위, 바위, 보 맞추기!</h1>");
+
+        var game = prompt("가위, 바위, 보 중 선택하세요!", "가위");
+        var gameNum;
+
+        switch(game)
+        {
+            case "가위" :
+                gameNum = 1;
+                break;
+            case "바위" :
+                gameNum = 2;
+                break;
+            case "보" :
+                gameNum = 3;
+                break;
+            default : alert("잘못 작성했습니다.");
+                location.reload();
+        }
+
+    </script>
+
+</head>
+
+<body>
+    
+</body>
+</html>
