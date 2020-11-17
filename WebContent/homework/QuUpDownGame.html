@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuUpDownGame.html</title>
+
+    <style>
+        * {margin : 0; padding : 0}
+        div
+        {
+            border : 1px solid black; padding: 5px;
+            width : 300px; height : 450px; text-align: left;
+        }
+      
+    </style>
+
+    <script>
+         
+    </script>
+   
+</head>
+
+
+
+<body>
+        <div>
+    
+        <h2>업다운게임</h2>
+        <br>
+        <h3>1~100사이의 숫자를 입력하세요</h3>
+        <br><br>
+        <h3>시도횟수 : <span id = "count" style="font-size: 2em;">0</span>회</h3>
+        <br>
+        숫자입력 : 
+                <input type="number" id="inputNum" style="width: 50px;">
+                <input type="button" value="확인" onclick="start();" />
+                <input type="button" value="새로고침" id="restart" onclick="restart();" />
+        <br>
+        <p><img id="photo" src="../images/updowngame.jpg" 
+                        alt="UpDown" width="300px" height="230px"></p>
+
+
+        </div>
+
+        <script>
+            
+            var gameCount; //변수선언
+            gameCount = 0; //0으로 초기화
+            var rdNum = parseInt(Math.random()*100) + 1;
+            //*100으로 최대값 100설정 , +1로 최소값 1설정
+            console.log("rdNum" , rdNum);
+
+            document.getElementById("restart").style.display = "none";
+            //새로고침 처음에는 안보이게 설정(none)
+
+            var num = document.getElementById("inputNum").value;
+            var photo = document.getElementById("photo");
+
+            function start()
+            {
+                if(num>=7)
+                {
+                    alert("시도횟수가 초과됨. 재시작합니다!");
+                    location.reload();
+                    return;
+                }
+
+                if(num<1 || num>100)
+                {
+                    alert("1 ~ 100 사이의 정수를 입력하세요!");
+                    img.src="../images/error.jpg";
+                    return;
+                }
+
+                else if(num<rdNum)
+                {
+                    img.src="../images/up.jpg";
+                }
+
+                else if(num>rdNum)
+                {
+                    img.src="../images/down.jpg";
+                }
+
+                else
+                {
+                    alert("정답입니다!")
+                    img.src="../images/answer.jpg";
+                }
+                gameCount++;
+            }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
