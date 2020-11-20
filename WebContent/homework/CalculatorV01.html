@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalculatorV01.html</title>
+
+    <style>
+        
+        * 
+        { 
+            text-align: center; font-weight: bold; color: white;
+        }
+
+        h2 { color: black; }
+    
+        table 
+        { 
+            width: 400px; height: 450px; border-radius: 10px;
+            border: 1px solid #dddddd; background-color: #dddddd;
+        }
+
+        #display 
+        { 
+            font-size: 40px; text-align: right; background-color:#70C738;
+            border-radius: 10px; padding: 10px; color: #373737;
+        }
+
+        .cancel
+        {
+            background-color: #7B7B7B; width: 205px;
+            border-radius: 10px; padding: 15px; padding-top: 20px;
+            font-size: 20px; border:1px solid #dddddd;
+        }
+
+        .button
+        {
+            background-color: #373737; width: 100px;
+            border-radius: 10px; padding: 15px;
+            font-size: 20px; border: 1px solid #dddddd;
+        }
+
+        .button2
+        {
+            background-color: #FA960A; width: 100px;
+            border-radius: 10px; padding: 15px;
+            font-size: 20px; border: 1px solid #dddddd;
+        }
+        
+    </style>
+
+    <!-- 계산기가 동작하도록 하는 script 작성 -->
+    <script>
+
+        function inputNum(value) //value를 매개변수로 하는 inputNum 함수 실행
+        {
+            var display = document.getElementById("display") //display DOM객체를 선언한다
+
+            if(parseInt(display.innerHTML)==0) //display창에 0이 입력되었다면
+            {
+                display.innerHTML = ""; //0을 지운다(01, 072 이렇게 될 수 있음)
+            }
+            
+            if(value=='=') //=을 누를 경우 결과가 출력된다
+            {
+                calulate();
+                //document.getElementById("display").innerHTML = eval(str);
+            }
+            else
+            {
+                display.innerHTML += value; //=이 아닌 다른 버튼을 누를 경우 display에 누적된다
+            }
+
+            function calulate() //계산함수
+            {
+                var display = document.getElementById("display") //함수가 다르기 때문에 다시 선언!(전역변수아님)
+                var result = eval(display.innerHTML); //eval 함수를 사용! 잘라내듯 계산(?)
+                display.innerHTML = result; //결과를 표시
+            }
+
+        }
+            
+        function clear(c)
+        {
+            document.getElementById("display").innerHTML = "0";
+        }
+    
+        function backSpace(back)
+        {
+            var displayStr = document.getElementById("display"); //입력된 텍스트 가져오기
+            var displayArr = parseInt(displayStr.innerHTML.length); //텍스트의 길이 알아내기
+            displayStr.innerHTML = displayStr.innerHTML.substr(0, (displayArr-1)); //가장 오른쪽 문자 하나 자르기
+        }
+
+        if(displayStr.innerHTML=="") //만약 display에 아무 숫자도 없다면
+        {
+            displayStr.innerHTML = "0"; //0으로 초기화시킨다!
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h2>계산기</h2>
+
+    <table align="center">
+    <!--이걸 center로 해줘야지 "계산기"가 가운데 고정됨!-->
+        
+        <!-- 디스플레이창 -->
+        <tr> 
+            <td colspan="4" id="display">0</td>
+        </tr>
+        
+        <!-- Backspace, clear버튼 -->
+        <tr>
+            <td colspan="2">
+                <button class="cancel" onclick="backSpace('back');">
+                    BackSpace
+                </button>              
+            </td>
+            <td colspan="2">
+                <button class="cancel" onclick="clear('c');">
+                    C
+                </button>
+            </td>
+        </tr>
+        
+        <!-- 
+            숫자버튼과 연산부호버튼!
+            둘이 바탕색이 다르기 때문에 클래스를 두개로 나눴다
+        -->
+        <tr>
+            <td>
+                <button class="button" onclick="inputNum('1');">1</button>
+            </td>
+            <td>
+                <button class="button" onclick="inputNum('2');">2</button>
+            </td>
+            <td>
+                <button class="button" onclick="inputNum('3');">3</button>
+            </td>
+            <td>
+                <button class="button2" onclick="inputNum('/');">/</button>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <button class="button" onclick="inputNum('4');">4</button>
+            </td>
+            <td>
+                <button class="button" onclick="inputNum('5');">5</button>
+            </td>
+            <td>
+                <button class="button" onclick="inputNum('6');">6</button>
+            </td>
+            <td>
+                <button class="button2" onclick="inputNum('*');">X</button>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <button class="button" onclick="inputNum('7');">7</button>
+            </td>
+            <td>
+                <button class="button" onclick="inputNum('8');">8</button>
+            </td>
+            <td>
+                <button class="button" onclick="inputNum('9');">9</button>
+            </td>
+            <td>
+                <button class="button2" onclick="inputNum('+');">+</button>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <button class="button" onclick="inputNum('=');">=</button>
+            </td>
+            <td>
+                <button class="button" onclick="inputNum('0');">0</button>
+            </td>
+            <td>
+                <button class="button" onclick="inputNum('.');">.</button>
+            </td>
+            <td>
+                <button class="button2" onclick="inputNum('-');">-</button>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
