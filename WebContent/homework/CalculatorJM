@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalculatorV01.html</title>
+    <title>CalculatorJM</title>
 
     <style>
         
@@ -79,9 +79,9 @@
             }
 
         }
-            
-        //function clear(c) //function명을 변경한다! clear라는 function명이 있을 수 있기 때문이다!
-        function clearButton(c) //그리고 실행이 안되면 function 안에 alert를 넣어서 호출 확인해야함!
+        
+		// function 명 변경 (오류일때는 Function 안에 alert 을 넣어서 호출하는지부터 봐야함.) clear 라는 명사로 된 Function 명은 예약어 일 가능성이 높아서 안씀..		
+        function clearnum(c)
         {
             document.getElementById("display").innerHTML = "0";
         }
@@ -91,16 +91,12 @@
             var displayStr = document.getElementById("display"); //입력된 텍스트 가져오기
             var displayArr = parseInt(displayStr.innerHTML.length); //텍스트의 길이 알아내기
             displayStr.innerHTML = displayStr.innerHTML.substr(0, (displayArr-1)); //가장 오른쪽 문자 하나 자르기
-            
-            //displayStr은 function안에 선언되어 있는데 displayStr을 함수 밖에서 사용하면 오류가 난다!
-            //처음에 if문을 function backSpace(back) 밖에 사용해서 오류가 남!
-            if(displayStr.innerHTML=="") //만약 display에 아무 숫자도 없다면
-            {
-                displayStr.innerHTML = "0"; //0으로 초기화시킨다!
-            }
-
+			// displayStr 은 function 안에 선언되어 있는데 displayStr 을 function 밖에서 사용하면 오류
+			if(displayStr.innerHTML=="") //만약 display에 아무 숫자도 없다면
+			{
+				displayStr.innerHTML = "0"; //0으로 초기화시킨다!
+			}
         }
-
     </script>
 
 </head>
@@ -125,7 +121,7 @@
                 </button>              
             </td>
             <td colspan="2">
-                <button class="cancel" onclick="clearButton('c');">
+                <button class="cancel" onclick="clearnum('c');">
                     C
                 </button>
             </td>
